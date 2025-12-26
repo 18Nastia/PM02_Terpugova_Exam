@@ -19,13 +19,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore Console App
-      run: dotnet restore /app/CalculateShortestPath/CalculateShortestPath
+      run: dotnet restore app/CalculateShortestPath/CalculateShortestPath.csproj
 
     - name: Restore Tests
-      run: dotnet restore app/CalculateShortestPath/CalculateShortestPath.Tests
+      run: dotnet restore app/CalculateShortestPath/CalculateShortestPath.Tests/CalculateShortestPath.Tests.csproj
 
     - name: Build
-      run: dotnet build app/CalculateShortestPath/CalculateShortestPath.Tests --no-restore
+      run: dotnet build app/CalculateShortestPath/CalculateShortestPath.Tests/CalculateShortestPath.Tests.csproj --no-restore
 
     - name: Test
-      run: dotnet test app/CalculateShortestPath/CalculateShortestPath.Tests --no-build --verbosity normal
+      run: dotnet test app/CalculateShortestPath/CalculateShortestPath.Tests/CalculateShortestPath.Tests.csproj --no-build --verbosity normal
