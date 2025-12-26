@@ -112,5 +112,14 @@ class Program
             Console.WriteLine("Нет пути между этими точками.");
             return;
         }
+
+        Console.Write("Путь: ");
+        int current = start;
+        while (current != end)
+        {
+            Console.Write((current + 1) + " -> ");
+            current = next[current, end];
+        }
+        Console.WriteLine(end + 1);
     }
 }
