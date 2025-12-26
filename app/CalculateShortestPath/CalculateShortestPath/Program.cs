@@ -37,7 +37,7 @@ public partial class Program
                 double distance = double.Parse(parts[2].Replace(',', '.'), CultureInfo.InvariantCulture);
 
                 distances[point1, point2] = distance;
-                distances[point2, point1] = distance; // если граф неориентированный
+                distances[point2, point1] = distance;
             }
             catch (Exception ex)
             {
