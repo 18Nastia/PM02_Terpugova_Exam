@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="CalculateShortestPath.Tests/CalculateShortestPath.Tests.csproj" Id="025a73ca-aba0-4275-bb71-d3cb8ddac251" />
   <Project Path="CalculateShortestPath/CalculateShortestPath.csproj" />
 </Solution>
