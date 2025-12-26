@@ -45,6 +45,72 @@ class Program
             }
         }
 
-        return;
+        // Применение алгоритма Флойда
+        double[,] shortestPaths = CalculateFloyd(distances, out int[,] next);
+
+        while (true)
+        {
+            Console.WriteLine("Введите две точки для поиска кратчайшего пути (или 'Q' для выхода):");
+            string input = Console.ReadLine();
+            if (input.Equals("Q", StringComparison.OrdinalIgnoreCase)) break;
+
+            var points = input.Split(' ');
+            try
+            {
+                int p1 = int.Parse(points[0]) - 1;
+                int p2 = int.Parse(points[1]) - 1;
+
+                double routeLength = shortestPaths[p1, p2];
+                Console.WriteLine($"Кратчайшее расстояние между точками {p1 + 1} и {p2 + 1}: {routeLength}");
+                GetPath(next, p1, p2);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка ввода: " + ex.Message);
+            }
+        }
+    }
+
+    static double[,] CalculateFloyd(double[,] a, out int[,] next)
+    {
+        int n = a.GetLength(0);
+        double[,] d = (double[,])a.Clone();
+        next = new int[n, n];
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (d[i, j] < double.MaxValue)
+                    next[i, j] = j;
+                else
+                    next[i, j] = -1;
+            }
+        }
+
+        for (int k = 0; k < n; k++)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (d[i, j] > d[i, k] + d[k, j])
+                    {
+                        d[i, j] = d[i, k] + d[k, j];
+                        next[i, j] = next[i, k];
+                    }
+                }
+            }
+        }
+        return d;
+    }
+
+    static void GetPath(int[,] next, int start, int end)
+    {
+        if (next[start, end] == -1)
+        {
+            Console.WriteLine("Нет пути между этими точками.");
+            return;
+        }
     }
 }
