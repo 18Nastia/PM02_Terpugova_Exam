@@ -22,7 +22,7 @@ jobs:
       run: ls -R app/
 
     - name: Restore Console App
-      run: dotnet restore app/CalculateShortestPath/CalculateShortestPath.csproj
+      run: dotnet restore app/CalculateShortestPath/CalculateShortestPath/CalculateShortestPath.csproj
 
     - name: Restore Tests
       run: dotnet restore app/CalculateShortestPath/CalculateShortestPath.Tests/CalculateShortestPath.Tests.csproj
