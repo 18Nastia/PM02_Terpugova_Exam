@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-class Program
+public partial class Program
 {
     static void Main(string[] args)
     {
@@ -71,7 +71,7 @@ class Program
         }
     }
 
-    static double[,] CalculateFloyd(double[,] a, out int[,] next)
+    public static double[,] CalculateFloyd(double[,] a, out int[,] next)
     {
         int n = a.GetLength(0);
         double[,] d = (double[,])a.Clone();
